@@ -33,12 +33,12 @@ export const createAnecdote = (anecdoteContent) => {
   };
 };
 
-const initialState = anecdotesAtStart.map(asObject);
+const initialState = {
+  anecdotes: anecdotesAtStart.map(asObject),
+  filter: '',
+};
 
-const reducer = (state = initialState, action) => {
-  console.log('state now: ', state);
-  console.log('action', action);
-
+const anecdoteReducer = (state = initialState.anecdotes, action) => {
   switch (action.type) {
     case 'ADD_VOTE': {
       const anecdoteToVote = state.find(
@@ -61,4 +61,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default anecdoteReducer;
